@@ -32,35 +32,50 @@ public class Main {
   private static final long TIMEOUT_PANEL_MS = 10 * 1000;
   private static final int TIMEOUT_STATEMENT_S = 5;
 
+  // Array of valid character inputs
+  private static String validCharacters[] = new String[] {"1","2","3","4","5","6","7","8","9"};
+
   // Internal classes ///////////////////////////////////////////////////////////
   // InputFilter manages user input to the card number field.
   private static class InputFilter extends DocumentFilter {
     private static final int MAX_LENGTH = 8;
-
+  
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
         throws BadLocationException
     {
-      if (fb.getDocument() != null) {
-        super.insertString(fb, offset, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+      // Loop through validCharacters and filter out inputs that are not included in the array
+      for (int i = 0; i < validCharacters.length; i++) { 
+
+        if (stringToAdd.equals(validCharacters[i]) && fb.getDocument() != null) { 
+
+          super.insertString(fb, offset, stringToAdd, attr);
+          
+        } else {
+          Toolkit.getDefaultToolkit().beep();
+        }
       }
     }
+    
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
         throws BadLocationException
     {
-      if (fb.getDocument() != null) {
-        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+      // Loop through validCharacters and filter out inputs that are not included in the array
+      for (int i = 0; i < validCharacters.length; i++) {
+
+        if (stringToAdd.equals(validCharacters[i]) && fb.getDocument() != null) { 
+
+          super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+          
+        } else {
+          Toolkit.getDefaultToolkit().beep();
+        }
       }
     }
   }
+
 
   // Lookup the card information after button press ///////////////////////////
   public static class Update implements ActionListener {
