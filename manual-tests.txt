@@ -65,11 +65,11 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 ## Test steps
 1. Build and run CiCo
-2. Enter any non-numerical character into field and click Update
+2. Enter any non-numerical character into field
 3. Enter 00000000 into field and click Update
 
 ## Expected results
-* Program should deny you from entering non-numerical inputs at step 2
-* Program should accept your input at step 3
+* Program should ignore all non-numerical inputs at step 2
+* Program should accept your input at step 3 and update status
 
 
