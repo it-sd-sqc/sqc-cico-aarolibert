@@ -61,4 +61,12 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Module 6: Create visually appealing color scheme
 
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the field and click Update.
+3. Enter 99999999 into the field and click Update.
+
+## Expected results
+* Should display a warm complementery color scheme on all screens.
